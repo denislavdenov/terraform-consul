@@ -3,16 +3,16 @@ resource "aws_key_pair" "key" {
   public_key = "${file("~/.ssh/id_rsa.pub")}"
 }
 
-resource "aws_instance" "consul" {
-  ami                    = "${var.ami}"
-  instance_type          = "${var.instance_type}"
-  key_name               = "${aws_key_pair.key.id}"
-  vpc_security_group_ids = ["${var.security_group_id}"]
-  count                  = "${var.count}"
-  private_ip             = "172.31.16.1${count.index + 1}"
+resource "aws_instance" "consul1" {
+  ami                         = "${var.ami}"
+  instance_type               = "${var.instance_type}"
+  key_name                    = "${aws_key_pair.key.id}"
+  vpc_security_group_ids      = ["${var.security_group_id}"]
+  private_ip                  = "172.31.16.11"
   associate_public_ip_address = true
+
   tags {
-    Name = "consul-server${count.index + 1}"
+    Name = "consul-server1"
   }
 
   connection {
@@ -27,26 +27,95 @@ resource "aws_instance" "consul" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo bash /tmp/scripts/install_consul.sh"
-    ]
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "sudo bash /tmp/scripts/start_consul.sh"
-    ]
-  }
-  provisioner "remote-exec" {
-    inline = [
+      "sudo bash /tmp/scripts/install_consul.sh",
+      "sudo bash /tmp/scripts/start_consul.sh",
       "sudo bash /tmp/scripts/keyvalue.sh"
     ]
   }
-
-}
-output "server_id" {
-  value = "${join(", ", aws_instance.consul.*.id)}"
 }
 
-output "server_ip" {
-  value = "${join(", ", aws_instance.consul.*.public_ip)}"
+resource "aws_instance" "consul2" {
+  ami                         = "${var.ami}"
+  instance_type               = "${var.instance_type}"
+  key_name                    = "${aws_key_pair.key.id}"
+  vpc_security_group_ids      = ["${var.security_group_id}"]
+  private_ip                  = "172.31.16.12"
+  associate_public_ip_address = true
+
+  tags {
+    Name = "consul-server2"
+  }
+
+  connection {
+    user        = "ubuntu"
+    private_key = "${file("~/.ssh/id_rsa")}"
+  }
+
+  provisioner "file" {
+    source      = "scripts"
+    destination = "/tmp"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo bash /tmp/scripts/install_consul.sh",
+      "sudo bash /tmp/scripts/start_consul.sh",
+      "sudo bash /tmp/scripts/keyvalue.sh"
+    ]
+  }
 }
 
+resource "aws_instance" "consul3" {
+  ami                         = "${var.ami}"
+  instance_type               = "${var.instance_type}"
+  key_name                    = "${aws_key_pair.key.id}"
+  vpc_security_group_ids      = ["${var.security_group_id}"]
+  private_ip                  = "172.31.16.13"
+  associate_public_ip_address = true
+
+  tags {
+    Name = "consul-server3"
+  }
+
+  connection {
+    user        = "ubuntu"
+    private_key = "${file("~/.ssh/id_rsa")}"
+  }
+
+  provisioner "file" {
+    source      = "scripts"
+    destination = "/tmp"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo bash /tmp/scripts/install_consul.sh",
+      "sudo bash /tmp/scripts/start_consul.sh",
+      "sudo bash /tmp/scripts/keyvalue.sh"
+    ]
+  }
+}
+
+output "server_id1" {
+  value = "${aws_instance.consul1.id}"
+}
+
+output "server_ip1" {
+  value = "${aws_instance.consul1.public_ip}"
+}
+
+output "server_id2" {
+  value = "${aws_instance.consul2.id}"
+}
+
+output "server_ip2" {
+  value = "${aws_instance.consul2.public_ip}"
+}
+
+output "server_id3" {
+  value = "${aws_instance.consul3.id}"
+}
+
+output "server_ip3" {
+  value = "${aws_instance.consul3.public_ip}"
+}
