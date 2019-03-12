@@ -1,43 +1,18 @@
 #!/usr/bin/env bash
 set -x
-#search consul
+
 apt-get update -y
 apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y 
 
-# Install consul\
-export CONSUL_VER="1.4.2"
-which consul || {
-echo "Determining Consul version to install ..."
-
-CHECKPOINT_URL="https://checkpoint-api.hashicorp.com/v1/check"
-if [ -z "$CURRENT_VER" ]; then
-    CURRENT_VER=$(curl -s "${CHECKPOINT_URL}"/consul | jq .current_version | tr -d '"')
-fi
-
-
-if  ! [ "$CONSUL_VER" == "$CURRENT_VER" ]; then
-    echo "THERE IS NEWER VERSION OF CONSUL: ${CURRENT_VER}"
-    echo "Install is going to proceed with the older version: ${CONSUL_VER}"
-fi
-
-if [ -f "/tmp/pkg/consul_${CONSUL_VER}_linux_amd64.zip" ]; then
-		echo "Found Consul in /tmp/pkg"
-else
-    echo "Fetching Consul version ${CONSUL_VER} ..."
-    mkdir -p /tmp/pkg/
-    curl -s https://releases.hashicorp.com/consul/${CONSUL_VER}/consul_${CONSUL_VER}_linux_amd64.zip -o /tmp/pkg/consul_${CONSUL_VER}_linux_amd64.zip
-    if [ $? -ne 0 ]; then
-        echo "Download failed! Exiting."
-        exit 1
-    fi
-fi
-
+# Install consul
+export CONSUL_VER="1.4.3"
+mkdir -p /tmp/pkg/
+curl -s https://releases.hashicorp.com/consul/${CONSUL_VER}/consul_${CONSUL_VER}_linux_amd64.zip -o /tmp/pkg/consul_${CONSUL_VER}_linux_amd64.zip
 echo "Installing Consul version ${CONSUL_VER} ..."
 pushd /tmp
 unzip /tmp/pkg/consul_${CONSUL_VER}_linux_amd64.zip 
 sudo chmod +x consul
 sudo mv consul /usr/local/bin/consul
 
-}
 
 set +x
