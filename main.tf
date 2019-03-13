@@ -4,7 +4,7 @@ resource "aws_key_pair" "key" {
 }
 
 resource "aws_instance" "consul1" {
-  ami                         = "${var.ami}"
+  ami                         = "${var.ami_server}"
   instance_type               = "${var.instance_type}"
   key_name                    = "${aws_key_pair.key.id}"
   vpc_security_group_ids      = ["${var.security_group_id}"]
@@ -34,7 +34,7 @@ resource "aws_instance" "consul1" {
 }
 
 resource "aws_instance" "consul2" {
-  ami                         = "${var.ami}"
+  ami                         = "${var.ami_server}"
   instance_type               = "${var.instance_type}"
   key_name                    = "${aws_key_pair.key.id}"
   vpc_security_group_ids      = ["${var.security_group_id}"]
@@ -64,7 +64,7 @@ resource "aws_instance" "consul2" {
 }
 
 resource "aws_instance" "consul3" {
-  ami                         = "${var.ami}"
+  ami                         = "${var.ami_server}"
   instance_type               = "${var.instance_type}"
   key_name                    = "${aws_key_pair.key.id}"
   vpc_security_group_ids      = ["${var.security_group_id}"]
@@ -94,7 +94,7 @@ resource "aws_instance" "consul3" {
 }
 
 resource "aws_instance" "client1" {
-  ami                         = "${var.ami}"
+  ami                         = "${var.ami_client}"
   instance_type               = "${var.instance_type}"
   key_name                    = "${aws_key_pair.key.id}"
   vpc_security_group_ids      = ["${var.security_group_id}"]

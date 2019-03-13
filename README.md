@@ -11,11 +11,11 @@ Cluster of 3 consul servers,1 entry in KV store, 1 consul client that has nginx 
 
 #TO DO
 ## v0.0.3
-- [ ] build repo with packer + kitchen-test , server ami with consul installed
+- [x] build repo with packer + kitchen-test , server ami with consul installed
 
-- [ ] build repo with packer + kitchen-test , client ami with consul and nginx installed
+- [x] build repo with packer + kitchen-test , client ami with consul and nginx installed
 
-- [ ] use own ami for server and client
+- [x] use own ami for server and client
 
 ## v0.0.4
 - [ ] remove duplicated code - test what works, count or module
