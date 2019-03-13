@@ -1,8 +1,8 @@
 # sample repo showing how to create Consul cluster in AWS with Terraform
 
-# V0.0.1
+## V0.0.1
 Cluster of 3 consul servers and 1 entry in KV store
-# V0.0.2
+## V0.0.2
 Cluster of 3 consul servers,1 entry in KV store, 1 consul client that has nginx installed, Consul-template that reads the entry from KV store and updates the webserver's homepage
 
 
