@@ -119,7 +119,7 @@ if [[ "${var2}" =~ "ip-172-31-16" ]]; then
     sudo systemctl enable consul >/dev/null
    
     sudo systemctl start consul >/dev/null
-
+    sleep 5
 else
     if [[ "${var2}" =~ "client" ]]; then
         killall consul
