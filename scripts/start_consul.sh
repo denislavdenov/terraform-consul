@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+export DEBIAN_FRONTEND=noninteractive
 set -x
 export DOMAIN="denislav"
 export SERVER_COUNT=3
@@ -121,7 +122,7 @@ if [[ "${var2}" =~ "ip-172-31-16" ]]; then
     sudo systemctl start consul >/dev/null
     sleep 5
 else
-    if [[ "${var2}" =~ "client" ]]; then
+    if [[ "${var2}" =~ "ip-172-31-17" ]]; then
         killall consul
         create_client_conf ${var2} ${IP} ${JOIN_SERVER} ${LOG_LEVEL} ${DOMAIN} ${DCNAME}
     fi
