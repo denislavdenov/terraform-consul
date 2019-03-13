@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
+export DEBIAN_FRONTEND=noninteractive
 set -x
 
 apt-get update -y
 apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y 
+#wget http://launchpadlibrarian.net/317373999/unzip_6.0-21ubuntu1_amd64.deb
+#sudo dpkg -i unzip_6.0-21ubuntu1_amd64.deb
 
 # Install consul
 export CONSUL_VER="1.4.3"

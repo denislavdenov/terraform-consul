@@ -27,6 +27,8 @@ resource "aws_instance" "consul1" {
 
   provisioner "remote-exec" {
     inline = [
+      "sudo apt-get update -y",
+      "sudo apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y",
       "sudo bash /tmp/scripts/install_consul.sh",
       "sudo bash /tmp/scripts/start_consul.sh",
       "sudo bash /tmp/scripts/keyvalue.sh"
@@ -58,6 +60,8 @@ resource "aws_instance" "consul2" {
 
   provisioner "remote-exec" {
     inline = [
+      "sudo apt-get update -y",
+      "sudo apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y",
       "sudo bash /tmp/scripts/install_consul.sh",
       "sudo bash /tmp/scripts/start_consul.sh",
       "sudo bash /tmp/scripts/keyvalue.sh"
@@ -89,6 +93,8 @@ resource "aws_instance" "consul3" {
 
   provisioner "remote-exec" {
     inline = [
+      "sudo apt-get update -y",
+      "sudo apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y",
       "sudo bash /tmp/scripts/install_consul.sh",
       "sudo bash /tmp/scripts/start_consul.sh",
       "sudo bash /tmp/scripts/keyvalue.sh"
@@ -96,6 +102,42 @@ resource "aws_instance" "consul3" {
   }
 }
 
+resource "aws_instance" "client1" {
+  ami                         = "${var.ami}"
+  instance_type               = "${var.instance_type}"
+  key_name                    = "${aws_key_pair.key.id}"
+  vpc_security_group_ids      = ["${var.security_group_id}"]
+  private_ip                  = "172.31.17.11"
+  associate_public_ip_address = true
+
+  tags {
+    Name = "consul-client1"
+  }
+
+  connection {
+    user        = "ubuntu"
+    private_key = "${file("~/.ssh/id_rsa")}"
+  }
+
+  provisioner "file" {
+    source      = "scripts"
+    destination = "/tmp"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get update -y",
+      "sudo apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y",
+      "sudo apt-get install nginx -y",
+      "sudo apt-get install dnsmasq -y",
+      "sudo bash /tmp/scripts/install_consul.sh",
+      "sudo bash /tmp/scripts/start_consul.sh",
+      "sudo bash /tmp/scripts/consul-template.sh",
+      "sudo bash /tmp/scripts/conf-dnsmasq.sh",
+      "sudo bash /tmp/scripts/check_nginx.sh"
+    ]
+  }
+}
 output "server_id1" {
   value = "${aws_instance.consul1.id}"
 }
@@ -118,4 +160,12 @@ output "server_id3" {
 
 output "server_ip3" {
   value = "${aws_instance.consul3.public_ip}"
+}
+
+output "client_id1" {
+  value = "${aws_instance.client1.id}"
+}
+
+output "client_ip1" {
+  value = "${aws_instance.client1.public_ip}"
 }
