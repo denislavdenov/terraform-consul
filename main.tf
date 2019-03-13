@@ -27,9 +27,6 @@ resource "aws_instance" "consul1" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get update -y",
-      "sudo apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y",
-      "sudo bash /tmp/scripts/install_consul.sh",
       "sudo bash /tmp/scripts/start_consul.sh",
       "sudo bash /tmp/scripts/keyvalue.sh",
     ]
