@@ -31,7 +31,7 @@ resource "aws_instance" "consul1" {
       "sudo apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y",
       "sudo bash /tmp/scripts/install_consul.sh",
       "sudo bash /tmp/scripts/start_consul.sh",
-      "sudo bash /tmp/scripts/keyvalue.sh"
+      "sudo bash /tmp/scripts/keyvalue.sh",
     ]
   }
 }
@@ -64,7 +64,7 @@ resource "aws_instance" "consul2" {
       "sudo apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y",
       "sudo bash /tmp/scripts/install_consul.sh",
       "sudo bash /tmp/scripts/start_consul.sh",
-      "sudo bash /tmp/scripts/keyvalue.sh"
+      "sudo bash /tmp/scripts/keyvalue.sh",
     ]
   }
 }
@@ -97,7 +97,7 @@ resource "aws_instance" "consul3" {
       "sudo apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y",
       "sudo bash /tmp/scripts/install_consul.sh",
       "sudo bash /tmp/scripts/start_consul.sh",
-      "sudo bash /tmp/scripts/keyvalue.sh"
+      "sudo bash /tmp/scripts/keyvalue.sh",
     ]
   }
 }
@@ -134,10 +134,11 @@ resource "aws_instance" "client1" {
       "sudo bash /tmp/scripts/start_consul.sh",
       "sudo bash /tmp/scripts/consul-template.sh",
       "sudo bash /tmp/scripts/conf-dnsmasq.sh",
-      "sudo bash /tmp/scripts/check_nginx.sh"
+      "sudo bash /tmp/scripts/check_nginx.sh",
     ]
   }
 }
+
 output "server_id1" {
   value = "${aws_instance.consul1.id}"
 }
