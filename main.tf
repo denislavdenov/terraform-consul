@@ -57,9 +57,6 @@ resource "aws_instance" "consul2" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get update -y",
-      "sudo apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y",
-      "sudo bash /tmp/scripts/install_consul.sh",
       "sudo bash /tmp/scripts/start_consul.sh",
       "sudo bash /tmp/scripts/keyvalue.sh",
     ]
@@ -90,9 +87,6 @@ resource "aws_instance" "consul3" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get update -y",
-      "sudo apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y",
-      "sudo bash /tmp/scripts/install_consul.sh",
       "sudo bash /tmp/scripts/start_consul.sh",
       "sudo bash /tmp/scripts/keyvalue.sh",
     ]
@@ -123,11 +117,6 @@ resource "aws_instance" "client1" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get update -y",
-      "sudo apt-get install unzip socat jq dnsutils net-tools vim curl sshpass -y",
-      "sudo apt-get install nginx -y",
-      "sudo apt-get install dnsmasq -y",
-      "sudo bash /tmp/scripts/install_consul.sh",
       "sudo bash /tmp/scripts/start_consul.sh",
       "sudo bash /tmp/scripts/consul-template.sh",
       "sudo bash /tmp/scripts/conf-dnsmasq.sh",
