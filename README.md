@@ -10,12 +10,25 @@ Cluster of 3 consul servers,1 entry in KV store, 1 consul client that has nginx 
 
 
 #TO DO
-- [x] Add 1 nginx consul client
+## v0.0.3
+- [ ] build repo with packer + kitchen-test , server ami with consul installed
 
-- [x] Use Consul-Template to obtain KV entry and update webserver's homapege
+- [ ] build repo with packer + kitchen-test , client ami with consul and nginx installed
 
+- [ ] use own ami for server and client
+
+## v0.0.4
+- [ ] remove duplicated code - test what works, count or module
+
+## other stuff
 - [ ] Create second datacenter with 3 more servers and 1 client
 
 - [ ] Add Vault server and encrypt Vault and Consul communication
 
 - [ ] Add Logstash and Kibana for logs collection
+
+## done
+- [x] Add 1 nginx consul client
+
+- [x] Use Consul-Template to obtain KV entry and update webserver's homapege
+
