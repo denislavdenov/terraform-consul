@@ -10,6 +10,8 @@ Cluster of 3 consul servers,1 entry in KV store, 1 consul client that has nginx 
 
 
 #TO DO
+- [ ] build repo with packer + kitchen-test , basic ami with consul installed
+
 - [x] Add 1 nginx consul client
 
 - [x] Use Consul-Template to obtain KV entry and update webserver's homapege
