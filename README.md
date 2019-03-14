@@ -1,15 +1,11 @@
 # sample repo showing how to create Consul cluster in AWS with Terraform
 
 ## V0.0.1
-Cluster of 3 consul servers and 1 entry in KV store
+- [x] Cluster of 3 consul servers and 1 entry in KV store
+
 ## V0.0.2
-Cluster of 3 consul servers,1 entry in KV store, 1 consul client that has nginx installed, Consul-template that reads the entry from KV store and updates the webserver's homepage
+- [x] Cluster of 3 consul servers,1 entry in KV store, 1 consul client that has nginx installed, Consul-template that reads the entry from KV store and updates the webserver's homepage
 
-
-
-
-
-#TO DO
 ## v0.0.3
 - [x] build repo with packer + kitchen-test , server ami with consul installed
 
@@ -19,6 +15,21 @@ Cluster of 3 consul servers,1 entry in KV store, 1 consul client that has nginx 
 
 ## v0.0.4
 - [x] remove duplicated code - test what works, count or module
+
+#TO DO
+
+## v0.0.5
+- [ ] move module code to own repo, terraform-aws-consul
+
+- [ ] update code to consume module from git
+
+- [ ] on client node install docker
+
+- [ ] on client node restart consul, make sure all works
+
+## next
+- [ ]
+- [ ]
 
 ## other stuff
 - [ ] Create second datacenter with 3 more servers and 1 client
