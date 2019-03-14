@@ -18,7 +18,7 @@ Cluster of 3 consul servers,1 entry in KV store, 1 consul client that has nginx 
 - [x] use own ami for server and client
 
 ## v0.0.4
-- [ ] remove duplicated code - test what works, count or module
+- [x] remove duplicated code - test what works, count or module
 
 ## other stuff
 - [ ] Create second datacenter with 3 more servers and 1 client
