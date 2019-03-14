@@ -1,5 +1,5 @@
 module "sofia" {
-  source = "sofia"
+  source = "github.com/denislavdenov/terraform-aws-consul/sofia"
 
   instance_type     = "${var.instance_type}"
   security_group_id = "${var.security_group_id}"

@@ -19,13 +19,13 @@
 #TO DO
 
 ## v0.0.5
-- [ ] move module code to own repo, terraform-aws-consul
+- [x] move module code to own repo, terraform-aws-consul
 
-- [ ] update code to consume module from git
+- [x] update code to consume module from git
 
-- [ ] on client node install docker
+- [x] on client node install docker
 
-- [ ] on client node restart consul, make sure all works
+- [x] on client node restart consul, make sure all works
 
 ## next
 - [ ]
