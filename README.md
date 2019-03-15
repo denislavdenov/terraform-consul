@@ -27,9 +27,8 @@
 
 - [x] on client node restart consul, make sure all works
 
-## next
-- [ ]
-- [ ]
+## v0.0.6
+- [ ] Add example with tests `terraform output`, `terraform state list` and if hosts are reachable
 
 ## other stuff
 - [ ] Create second datacenter with 3 more servers and 1 client
