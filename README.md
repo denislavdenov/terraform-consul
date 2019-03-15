@@ -30,6 +30,11 @@
 ## v0.0.6
 - [x] Add example with tests `terraform output`, `terraform state list` and if hosts are reachable
 
+## v0.0.7
+- [ ] Update DC name to be DC1 and domain to be .consul
+
+- [ ] Update tests accordingly 
+
 ## other stuff
 - [ ] Create second datacenter with 3 more servers and 1 client
 
