@@ -19,19 +19,19 @@ describe http("http://#{client_ip1}:80") do
   its('status') { should cmp 200 }
 end
 
-describe http("http://#{client_ip1}:8500/ui/sofia/services") do
+describe http("http://#{client_ip1}:8500/ui/dc1/services") do
   its('status') { should cmp 200 }
 end
 
-describe http("http://#{server_ip1}:8500/ui/sofia/services") do
+describe http("http://#{server_ip1}:8500/ui/dc1/services") do
   its('status') { should cmp 200 }
 end
 
-describe http("http://#{server_ip2}:8500/ui/sofia/services") do
+describe http("http://#{server_ip2}:8500/ui/dc1/services") do
   its('status') { should cmp 200 }
 end
 
-describe http("http://#{server_ip3}:8500/ui/sofia/services") do
+describe http("http://#{server_ip3}:8500/ui/dc1/services") do
   its('status') { should cmp 200 }
 end
 
