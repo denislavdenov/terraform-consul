@@ -1,7 +1,6 @@
 ---
 driver:
   name: terraform
-  parallelism: 1
 
 provisioner:
   name: terraform
