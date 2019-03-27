@@ -9,3 +9,8 @@ variable "subnet_id" {}
 variable "security_group_id" {
   type = "list"
 }
+
+variable "region" {
+  description = "Default AWS region"
+  default     = "us-east-1"
+}

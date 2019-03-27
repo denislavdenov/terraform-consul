@@ -35,6 +35,12 @@
 
 - [x] Update tests accordingly 
 
+## v0.0.8
+
+- [x] Refactored code to use count
+
+- [x] Added example folder with tests inside the module repo instead of this
+
 ## other stuff
 - [ ] Create second datacenter with 3 more servers and 1 client
 
