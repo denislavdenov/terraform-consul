@@ -41,8 +41,11 @@
 
 - [x] Added example folder with tests inside the module repo instead of this
 
+## v0.0.9
+
+- [x] Create second datacenter with 3 more servers and 1 client
+
 ## other stuff
-- [ ] Create second datacenter with 3 more servers and 1 client
 
 - [ ] Add Vault server and encrypt Vault and Consul communication
 
