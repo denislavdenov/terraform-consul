@@ -16,7 +16,6 @@
 ## v0.0.4
 - [x] remove duplicated code - test what works, count or module
 
-#TO DO
 
 ## v0.0.5
 - [x] move module code to own repo, terraform-aws-consul
@@ -45,7 +44,7 @@
 
 - [x] Create second datacenter with 3 more servers and 1 client
 
-## other stuff
+## #TO DO other stuff
 
 - [ ] Add Vault server and encrypt Vault and Consul communication
 
