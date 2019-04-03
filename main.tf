@@ -12,7 +12,7 @@ module "dc1" {
 }
 
 module "dc2" {
-  source = ".github.com/denislavdenov/terraform-aws-consul"
+  source = "github.com/denislavdenov/terraform-aws-consul"
 
   instance_type     = "${var.instance_type}"
   subnet_id         = "${var.subnet_id}"
