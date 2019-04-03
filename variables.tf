@@ -52,3 +52,13 @@ variable "IP_dc2" {
     "server" = "172.31.32.1"
   }
 }
+
+variable "join_wan" {
+  type        = "map"
+  description = "Variable used to properly assign tags for auto join."
+
+  default = {
+    "dc1"     = "dc1"
+    "not_dc1" = ""
+  }
+}
